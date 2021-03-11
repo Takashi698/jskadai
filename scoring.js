@@ -26,7 +26,7 @@ $(document).ready(function(){
     // 変数「average」に
     // 平均値を出して代入します。(平均をとりたい数の合計点数(sum) / 全体の個数)
     let average = sum / subject_points.length;
-    $("average_indicate").text(average);
+    $("#average_indicate").text(average);
     // ヒント! 全体の個数はlengthメソッドを使って求めます。(lengthメソッド: 文字列の長さや配列の要素数などを取得するメソッド)
   };
   // 平均点数を取得し、取得した平均点数からランク分け("A", "B", "C", "D")をするロジックを作ります。
@@ -95,10 +95,12 @@ $(document).ready(function(){
   });
   // 「最終ジャッジ」(id="btn-declaration")ボタンを押したら「function judgement()」が出力される処理です。
   $('#btn-declaration').click(function() {
-    if ($('#btn-declaration').on("click" >= 2)) {
-      $("alert-indicate").remove(judgement()); 
-    } else {
-      $("declaration").text(judgement()); 
-    };
-  });
-});
+    let achievement = get_achievement();
+        let pass_or_failure = get_pass_or_failure();
+        $("#declaration").text(`あなたの成績は${achievement}です。${pass_or_failure}です。`)
+        .css("background-color", "Cyan")
+        .css("margin", 10)
+        .css("padding", 10)
+        .css("border-radius", 10)
+      });
+    });
